@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password: MyString
+  first_name: MyString
+  last_name: MyString
+  payment_method: MyString
+  is_buyer: false
+  is_seller: false
+
+two:
+  username: MyString
+  password: MyString
+  first_name: MyString
+  last_name: MyString
+  payment_method: MyString
+  is_buyer: false
+  is_seller: false
