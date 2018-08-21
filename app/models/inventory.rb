@@ -1,7 +1,6 @@
 class Inventory < ApplicationRecord
-  has_many :product_inventories
-  has_many :products, through: :product_inventories
-
   belongs_to :seller,
+    foreign_key: "seller_id",
     class_name: :User
+  has_many :products
 end
