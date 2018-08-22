@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_140505) do
+ActiveRecord::Schema.define(version: 2018_08_22_214543) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "cart_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_140505) do
     t.integer "inventory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url", default: "default_product.jpg"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"
   end
 
