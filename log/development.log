@@ -6204,3 +6204,427 @@ FOREIGN KEY ("product_id")
   ↳ db/seeds.rb:26
   [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
   ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Destroy (1.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180820223017)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "email" varchar, "first_name" varchar, "last_name" varchar, "credit_card_number" integer, "is_seller" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223017_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223017"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCarts (20180820223135)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ea59a35211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_carts_on_user_id" ON "carts" ("user_id")[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223135"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateProducts (20180820223644)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" float, "description" text, "seller_id" integer, "inventory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_244f18105b"
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
+)[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_inventory_id" ON "products" ("inventory_id")[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223644"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateInventories (20180820223903)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seller_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_seller_id" ON "inventories" ("seller_id")[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223903"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCartProducts (20180821200911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cart_id" integer, "product_id" integer, "quantity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_a4f3e327f3"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+, CONSTRAINT "fk_rails_b6ff2a078a"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_cart_id" ON "cart_products" ("cart_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_product_id" ON "cart_products" ("product_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180821200911"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-22 11:45:23.347956"], ["updated_at", "2018-08-22 11:45:23.347956"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCart Load (0.2ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mCartProduct Load (0.1ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products"[0m
+  ↳ db/seeds.rb:12
+  [1m[36mInventory Load (0.1ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username"], ["password_digest", "$2a$10$fh0KMMXEeTe5iKSw8BTuAukef7Azr9N1CD0cfcF/ufLTtYknAyEyi"], ["email", "email1@1.com"], ["first_name", "First"], ["last_name", "Last"], ["credit_card_number", 31241581412], ["is_seller", 0], ["created_at", "2018-08-22 11:45:30.978309"], ["updated_at", "2018-08-22 11:45:30.978309"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username2"], ["password_digest", "$2a$10$Sea.6A9tzWTNWZWeaoozd.v0JcNxlqQcJ7k9ujZJZJ4x/9EL8Ina2"], ["email", "email2@2.com"], ["first_name", "Second"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 11:45:31.048580"], ["updated_at", "2018-08-22 11:45:31.048580"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username3"], ["password_digest", "$2a$10$p0fXKfFnLvXCcLOaQVc7nukOqeo2ZYlREXW1nlDT3dkneiBqB9BIC"], ["email", "email3@3.com"], ["first_name", "Third"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 11:45:31.121204"], ["updated_at", "2018-08-22 11:45:31.121204"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2018-08-22 11:45:31.166677"], ["updated_at", "2018-08-22 11:45:31.166677"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 2], ["created_at", "2018-08-22 11:45:31.169451"], ["updated_at", "2018-08-22 11:45:31.169451"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 3], ["created_at", "2018-08-22 11:45:31.172068"], ["updated_at", "2018-08-22 11:45:31.172068"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 2], ["created_at", "2018-08-22 11:45:31.178137"], ["updated_at", "2018-08-22 11:45:31.178137"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[36mInventory Create (0.3ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 3], ["created_at", "2018-08-22 11:45:31.180518"], ["updated_at", "2018-08-22 11:45:31.180518"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:45:31.191507"], ["updated_at", "2018-08-22 11:45:31.191507"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:45:31.194631"], ["updated_at", "2018-08-22 11:45:31.194631"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:45:31.199600"], ["updated_at", "2018-08-22 11:45:31.199600"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:45:31.202076"], ["updated_at", "2018-08-22 11:45:31.202076"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:45:31.205195"], ["updated_at", "2018-08-22 11:45:31.205195"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:45:31.207656"], ["updated_at", "2018-08-22 11:45:31.207656"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180820223017)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "email" varchar, "first_name" varchar, "last_name" varchar, "credit_card_number" integer, "is_seller" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223017_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223017"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCarts (20180820223135)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ea59a35211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_carts_on_user_id" ON "carts" ("user_id")[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223135"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateProducts (20180820223644)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" float, "description" text, "seller_id" integer, "inventory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_244f18105b"
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
+)[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_products_on_inventory_id" ON "products" ("inventory_id")[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223644"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateInventories (20180820223903)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seller_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_seller_id" ON "inventories" ("seller_id")[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223903"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCartProducts (20180821200911)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cart_id" integer, "product_id" integer, "quantity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_a4f3e327f3"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+, CONSTRAINT "fk_rails_b6ff2a078a"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_cart_id" ON "cart_products" ("cart_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_product_id" ON "cart_products" ("product_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180821200911"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-22 11:46:20.798500"], ["updated_at", "2018-08-22 11:46:20.798500"]]
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/nancydo/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mCartProduct Load (0.2ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mInventory Load (0.1ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username"], ["password_digest", "$2a$10$K8jB5stbsV8otrvMH1RKGuxrzrHEtSqxtdWSHG2TzRvhSYLsb7x5a"], ["email", "email1@1.com"], ["first_name", "First"], ["last_name", "Last"], ["credit_card_number", 31241581412], ["is_seller", 0], ["created_at", "2018-08-22 11:46:26.414923"], ["updated_at", "2018-08-22 11:46:26.414923"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username2"], ["password_digest", "$2a$10$IlT03k0c5Bo4UtUP.zj.J.tEsHU4EjgrQ9XJ2L4j4KNxcaOyp7KbW"], ["email", "email2@2.com"], ["first_name", "Second"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 11:46:26.487674"], ["updated_at", "2018-08-22 11:46:26.487674"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username3"], ["password_digest", "$2a$10$EKMPNq4P6Lj/ozerXCiBzuxfi5rZ6GA7tqgg9C3QOJSdJNqH1696i"], ["email", "email3@3.com"], ["first_name", "Third"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 11:46:26.558936"], ["updated_at", "2018-08-22 11:46:26.558936"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2018-08-22 11:46:26.582624"], ["updated_at", "2018-08-22 11:46:26.582624"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 2], ["created_at", "2018-08-22 11:46:26.586665"], ["updated_at", "2018-08-22 11:46:26.586665"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 3], ["created_at", "2018-08-22 11:46:26.626718"], ["updated_at", "2018-08-22 11:46:26.626718"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 2], ["created_at", "2018-08-22 11:46:26.634696"], ["updated_at", "2018-08-22 11:46:26.634696"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 3], ["created_at", "2018-08-22 11:46:26.637218"], ["updated_at", "2018-08-22 11:46:26.637218"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:46:26.647468"], ["updated_at", "2018-08-22 11:46:26.647468"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:46:26.651118"], ["updated_at", "2018-08-22 11:46:26.651118"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:46:26.654317"], ["updated_at", "2018-08-22 11:46:26.654317"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:46:26.656879"], ["updated_at", "2018-08-22 11:46:26.656879"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 11:46:26.660205"], ["updated_at", "2018-08-22 11:46:26.660205"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 11:46:26.663740"], ["updated_at", "2018-08-22 11:46:26.663740"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mCartProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 5], ["quantity", 1], ["created_at", "2018-08-22 11:46:26.676569"], ["updated_at", "2018-08-22 11:46:26.676569"]]
+  ↳ db/seeds.rb:35
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[36mCartProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 3], ["quantity", 11], ["created_at", "2018-08-22 11:46:26.679685"], ["updated_at", "2018-08-22 11:46:26.679685"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:39
+  [1m[36mCartProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 2], ["product_id", 1], ["quantity", 1], ["created_at", "2018-08-22 11:46:26.682550"], ["updated_at", "2018-08-22 11:46:26.682550"]]
+  ↳ db/seeds.rb:39
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:39

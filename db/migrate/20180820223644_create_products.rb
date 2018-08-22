@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :name
       t.float :price
       t.text :description
-      t.belongs_to :seller, foreign_key: true
+      t.integer :seller_id
       t.belongs_to :inventory, foreign_key: true
 
       t.timestamps
