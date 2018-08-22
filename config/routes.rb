@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
-
+  # root to: 'inventories#index'
+  # devise_for :users
   resources :users do
     resources :carts, only: [:show, :edit, :update]
   end
@@ -14,4 +14,10 @@ Rails.application.routes.draw do
       resources :products, only: [:new, :show, :edit, :destroy]
     end
   end
+
+  post 'sessions', to: 'sessions#create'
+  delete 'sessions', to: 'sessions#destroy'
+  get 'signup', to: 'users#new'
+  get 'login', to: 'sessions#new'
+
 end

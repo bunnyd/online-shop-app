@@ -5,6 +5,10 @@ ruby '2.3.3'
 gem 'bcrypt'
 gem 'awesome_rails_console'
 gem 'devise'
+<<<<<<< HEAD
+=======
+gem 'rspec'
+>>>>>>> 54afe5e03fec35edfa547e120690b0b6a90d29ed
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
