@@ -8163,3 +8163,617 @@ puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
 puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddImageUrlToProducts (20180822190825)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "products" ADD "image_url" varchar[0m
+  ↳ db/migrate/20180822190825_add_image_url_to_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822190825"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddImageUrlToProducts (20180822190825)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" float DEFAULT NULL, "description" text DEFAULT NULL, "seller_id" integer DEFAULT NULL, "inventory_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image_url" varchar DEFAULT NULL)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_inventory_id" ON "aproducts" ("inventory_id")[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","price","description","seller_id","inventory_id","created_at","updated_at","image_url")
+                     SELECT "id","name","price","description","seller_id","inventory_id","created_at","updated_at","image_url" FROM "products"[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddImageUrlToProducts (20180822190825)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" float DEFAULT NULL, "description" text DEFAULT NULL, "seller_id" integer DEFAULT NULL, "inventory_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image_url" varchar DEFAULT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aproducts_on_inventory_id" ON "aproducts" ("inventory_id")[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","price","description","seller_id","inventory_id","created_at","updated_at","image_url")
+                     SELECT "id","name","price","description","seller_id","inventory_id","created_at","updated_at","image_url" FROM "products"[0m
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180820223017)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar DEFAULT 'customer', "username" varchar, "first_name" varchar, "last_name" varchar, "credit_card_number" integer, "is_seller" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223017_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223017"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCarts (20180820223135)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ea59a35211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_carts_on_user_id" ON "carts" ("user_id")[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223135"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateProducts (20180820223644)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" float, "description" text, "seller_id" integer, "inventory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_244f18105b"
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
+)[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_products_on_inventory_id" ON "products" ("inventory_id")[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223644"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateInventories (20180820223903)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seller_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_seller_id" ON "inventories" ("seller_id")[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223903"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCartProducts (20180821200911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cart_id" integer, "product_id" integer, "quantity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_a4f3e327f3"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+, CONSTRAINT "fk_rails_b6ff2a078a"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_cart_id" ON "cart_products" ("cart_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_product_id" ON "cart_products" ("product_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180821200911"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddDeviseToUsers (20180822140505)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:6
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822140505"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-22 19:19:12.343519"], ["updated_at", "2018-08-22 19:19:12.343519"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (17.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mUser Exists (1.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mCartProduct Load (0.5ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCart Load (1.3ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email1@1.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username"], ["first_name", "First"], ["last_name", "Last"], ["credit_card_number", 31241581412], ["is_seller", 0], ["created_at", "2018-08-22 20:09:56.195880"], ["updated_at", "2018-08-22 20:09:56.195880"], ["email", "email1@1.com"], ["encrypted_password", "$2a$11$THOlJ6UsRm3NW0p6r5gGLOxyIzFq1GIA7l4K4AvfAqtDtf/YIc1zO"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (4.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email2@2.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username2"], ["first_name", "Second"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 20:09:56.372372"], ["updated_at", "2018-08-22 20:09:56.372372"], ["email", "email2@2.com"], ["encrypted_password", "$2a$11$bGTVHZ955Zp9qMG2ivGTlO9MktwbGQPcJV0beC86b63GmpwYQRywG"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email3@3.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username3"], ["first_name", "Third"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 20:09:56.591395"], ["updated_at", "2018-08-22 20:09:56.591395"], ["email", "email3@3.com"], ["encrypted_password", "$2a$11$LRzHnX7eOkLeLuiBmVnakeBw0SZaA8b65ltd61hkjzAxMn87IQpoG"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2018-08-22 20:09:56.623773"], ["updated_at", "2018-08-22 20:09:56.623773"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCart Create (3.1ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 2], ["created_at", "2018-08-22 20:09:56.639129"], ["updated_at", "2018-08-22 20:09:56.639129"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mCart Create (4.0ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 3], ["created_at", "2018-08-22 20:09:56.649569"], ["updated_at", "2018-08-22 20:09:56.649569"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 2], ["created_at", "2018-08-22 20:09:56.698295"], ["updated_at", "2018-08-22 20:09:56.698295"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (27.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[36mInventory Create (1.0ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 3], ["created_at", "2018-08-22 20:09:56.742416"], ["updated_at", "2018-08-22 20:09:56.742416"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[36mProduct Create (5.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 20:09:56.818528"], ["updated_at", "2018-08-22 20:09:56.818528"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[36mProduct Create (1.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 20:09:56.843329"], ["updated_at", "2018-08-22 20:09:56.843329"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[36mProduct Create (1.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 20:09:56.851762"], ["updated_at", "2018-08-22 20:09:56.851762"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mProduct Create (1.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 20:09:56.859700"], ["updated_at", "2018-08-22 20:09:56.859700"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[36mProduct Create (2.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 20:09:56.871469"], ["updated_at", "2018-08-22 20:09:56.871469"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mProduct Create (15.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 20:09:56.883262"], ["updated_at", "2018-08-22 20:09:56.883262"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (20.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mCartProduct Create (1.1ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 5], ["quantity", 1], ["created_at", "2018-08-22 20:09:56.943591"], ["updated_at", "2018-08-22 20:09:56.943591"]]
+  ↳ db/seeds.rb:35
+  [1m[35m (30.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[36mCartProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 3], ["quantity", 11], ["created_at", "2018-08-22 20:09:56.977496"], ["updated_at", "2018-08-22 20:09:56.977496"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:39
+  [1m[36mCartProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 2], ["product_id", 1], ["quantity", 1], ["created_at", "2018-08-22 20:09:56.986076"], ["updated_at", "2018-08-22 20:09:56.986076"]]
+  ↳ db/seeds.rb:39
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:39
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mInventory Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "inventories" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  [1m[36mProduct Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "products" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mInventory Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "inventories" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  [1m[36mCartProduct Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cart_products" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Load (1.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products"[0m
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" ORDER BY "products"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCartProduct Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cart_products" WHERE "cart_products"."product_id" = ? LIMIT ?[0m  [["product_id", 1], ["LIMIT", 1]]
+  [1m[36mCartProduct Load (1.4ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products" WHERE "cart_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddImageUrlToProducts (20180822214543)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddImageUrlToProducts (20180822214543)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "products" ADD "image_url" varchar DEFAULT 'default_product.jpg'[0m
+  ↳ db/migrate/20180822214543_add_image_url_to_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822214543"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mInventory Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "inventories" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mInventory Load (1.5ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mInventory Load (0.6ms)[0m  [1m[34mSELECT  "inventories".* FROM "inventories" WHERE "inventories"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180820223017)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar DEFAULT 'customer', "username" varchar, "first_name" varchar, "last_name" varchar, "credit_card_number" integer, "is_seller" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223017_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223017"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCarts (20180820223135)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_ea59a35211"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_carts_on_user_id" ON "carts" ("user_id")[0m
+  ↳ db/migrate/20180820223135_create_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223135"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateProducts (20180820223644)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" float, "description" text, "seller_id" integer, "inventory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_244f18105b"
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
+)[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_products_on_inventory_id" ON "products" ("inventory_id")[0m
+  ↳ db/migrate/20180820223644_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223644"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateInventories (20180820223903)
+  [1m[35m (1.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seller_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_seller_id" ON "inventories" ("seller_id")[0m
+  ↳ db/migrate/20180820223903_create_inventories.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180820223903"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateCartProducts (20180821200911)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cart_id" integer, "product_id" integer, "quantity" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_a4f3e327f3"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+, CONSTRAINT "fk_rails_b6ff2a078a"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_cart_id" ON "cart_products" ("cart_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_product_id" ON "cart_products" ("product_id")[0m
+  ↳ db/migrate/20180821200911_create_cart_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180821200911"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddDeviseToUsers (20180822140505)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "remember_created_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:13
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_at" datetime[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "current_sign_in_ip" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "last_sign_in_ip" varchar[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20180822140505_add_devise_to_users.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822140505"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to AddImageUrlToProducts (20180822214543)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "products" ADD "image_url" varchar DEFAULT 'default_product.jpg'[0m
+  ↳ db/migrate/20180822214543_add_image_url_to_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180822214543"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (2.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-22 22:34:06.001901"], ["updated_at", "2018-08-22 22:34:06.001901"]]
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (15.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/erikabarrero/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mCartProduct Load (0.2ms)[0m  [1m[34mSELECT "cart_products".* FROM "cart_products"[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCart Load (0.1ms)[0m  [1m[34mSELECT "carts".* FROM "carts"[0m
+  ↳ db/seeds.rb:10
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:11
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email1@1.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username"], ["first_name", "First"], ["last_name", "Last"], ["credit_card_number", 31241581412], ["is_seller", 0], ["created_at", "2018-08-22 22:34:11.324327"], ["updated_at", "2018-08-22 22:34:11.324327"], ["email", "email1@1.com"], ["encrypted_password", "$2a$11$MwHO8scFeGeukytda4Gfa.DPNOMgG5GNiCpIMzRkZ2AGT4kbJ9VeK"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email2@2.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username2"], ["first_name", "Second"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 22:34:11.492479"], ["updated_at", "2018-08-22 22:34:11.492479"], ["email", "email2@2.com"], ["encrypted_password", "$2a$11$89Sgvy.4oYLuxmIpGocSmeOxOgGQRqzEl1fipj58bez9CXRR6mF3S"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "email3@3.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:17
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "credit_card_number", "is_seller", "created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["username", "Username3"], ["first_name", "Third"], ["last_name", "Last"], ["credit_card_number", 3234581412], ["is_seller", 1], ["created_at", "2018-08-22 22:34:11.667199"], ["updated_at", "2018-08-22 22:34:11.667199"], ["email", "email3@3.com"], ["encrypted_password", "$2a$11$65A2cwYDsYvi7OUHPwJrL.Tr4XWzyGEQrCLYnVlvObzzmw13YaJOy"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[36mCart Create (12.4ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2018-08-22 22:34:11.715794"], ["updated_at", "2018-08-22 22:34:11.715794"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCart Create (1.2ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 2], ["created_at", "2018-08-22 22:34:11.737011"], ["updated_at", "2018-08-22 22:34:11.737011"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (12.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[36mCart Create (0.8ms)[0m  [1m[32mINSERT INTO "carts" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 3], ["created_at", "2018-08-22 22:34:11.759373"], ["updated_at", "2018-08-22 22:34:11.759373"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[36mInventory Create (0.7ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 2], ["created_at", "2018-08-22 22:34:11.776155"], ["updated_at", "2018-08-22 22:34:11.776155"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("seller_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["seller_id", 3], ["created_at", "2018-08-22 22:34:11.793930"], ["updated_at", "2018-08-22 22:34:11.793930"]]
+  ↳ db/seeds.rb:24
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:24
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[36mProduct Create (2.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 22:34:11.835442"], ["updated_at", "2018-08-22 22:34:11.835442"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "chocolate bar"], ["price", 4.5], ["description", "delicious"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 22:34:11.853150"], ["updated_at", "2018-08-22 22:34:11.853150"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[36mProduct Create (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 22:34:11.859327"], ["updated_at", "2018-08-22 22:34:11.859327"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "book"], ["price", 14.5], ["description", "bestselling thriller"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 22:34:11.868900"], ["updated_at", "2018-08-22 22:34:11.868900"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 2], ["inventory_id", 1], ["created_at", "2018-08-22 22:34:11.875728"], ["updated_at", "2018-08-22 22:34:11.875728"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[36mProduct Create (1.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "seller_id", "inventory_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "computer"], ["price", 1450.0], ["description", "for the future programmer"], ["seller_id", 3], ["inventory_id", 2], ["created_at", "2018-08-22 22:34:11.894067"], ["updated_at", "2018-08-22 22:34:11.894067"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mCartProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 5], ["quantity", 1], ["created_at", "2018-08-22 22:34:11.933999"], ["updated_at", "2018-08-22 22:34:11.933999"]]
+  ↳ db/seeds.rb:35
+  [1m[35m (8.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[36mCartProduct Create (5.3ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 3], ["quantity", 11], ["created_at", "2018-08-22 22:34:11.946026"], ["updated_at", "2018-08-22 22:34:11.946026"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:39
+  [1m[36mCartProduct Create (0.8ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 2], ["product_id", 1], ["quantity", 1], ["created_at", "2018-08-22 22:34:11.957451"], ["updated_at", "2018-08-22 22:34:11.957451"]]
+  ↳ db/seeds.rb:39
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:39
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mInventory Load (1.3ms)[0m  [1m[34mSELECT  "inventories".* FROM "inventories" WHERE "inventories"."seller_id" = ? LIMIT ?[0m  [["seller_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT  "inventories".* FROM "inventories" WHERE "inventories"."seller_id" = ? LIMIT ?[0m  [["seller_id", 2], ["LIMIT", 1]]
