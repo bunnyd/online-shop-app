@@ -12,9 +12,9 @@ Product.destroy_all
 Inventory.destroy_all
 User.destroy_all
 
-buyer1 = User.create(username: "Username", password: "Password", email: "email1@1.com", first_name: "First", last_name: "Last", credit_card_number: "31241581412", is_seller: false)
-seller2 = User.create(username: "Username2", password: "Password", email: "email2@2.com", first_name: "Second", last_name: "Last", credit_card_number: "3234581412", is_seller: true)
-seller3 = User.create(username: "Username3", password: "Password", email: "email3@3.com", first_name: "Third", last_name: "Last", credit_card_number: "3234581412",  is_seller: true)
+buyer1 = User.create(username: "Username", password: "Password", email: "email1@1.com", first_name: "First", last_name: "Last", credit_card_number: "3124158141212938", is_seller: false)
+seller2 = User.create(username: "Username2", password: "Password", email: "email2@2.com", first_name: "Second", last_name: "Last", credit_card_number: "3124158141212938", is_seller: true)
+seller3 = User.create(username: "Username3", password: "Password", email: "email3@3.com", first_name: "Third", last_name: "Last", credit_card_number: "3124158141212938",  is_seller: true)
 
 buyer1_cart = Cart.create(user: buyer1)
 seller2_cart = Cart.create(user: seller2)

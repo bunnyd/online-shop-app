@@ -1,0 +1,12 @@
+<h2>Online Shop</h2>
+
+<% if flash[:error] != nil %>
+  <p><b>Error:</b> <%= flash[:error] %></p>
+<% end %>
+
+  <%= form_with url: '/sessions' do |f| %>
+    <%= f.text_field :email, placeholder: "email" %>
+    <%= f.password_field :password, placeholder: "password" %>
+    <%= f.submit %>
+  <% end %>
+</div>
