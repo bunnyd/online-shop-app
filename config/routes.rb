@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   resources :users
   resources :inventories
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :cart_products
 
-  post 'checkout', to: 'carts#_checkout'
+  post 'checkout', to: 'carts#checkout'
   post 'sessions', to: 'sessions#create'
   delete 'sessions', to: 'sessions#destroy'
   get 'signup', to: 'users#new'

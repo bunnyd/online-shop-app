@@ -6,7 +6,7 @@
     <%= link_to product.name, product_path(product) %><br>
     $<%= product.price %><br>
     <%= product.description %><br>
-    For sale by:<%= link_to product.seller.username, users_path(product.seller) %><br>
+    For sale by:<%= link_to product.seller.username, user_path(product.seller) %><br>
     <img src="<%= product.image_url %>" alt="<%= product.name %>"><br>
   </ul><br>
 

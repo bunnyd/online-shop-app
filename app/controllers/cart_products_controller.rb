@@ -44,14 +44,14 @@ class CartProductsController < ApplicationController
   def destroy
     # @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
-    byebug
-    redirect_to carts_path
+    # byebug
+    redirect_to cart_path(@cart_product.cart)
   end
 
   private
   def set_cart_product
     # byebug
-    @cart_product = CartProduct.find(session[:user_id])
+    @cart_product = CartProduct.find(params[:id])
 
   end
 

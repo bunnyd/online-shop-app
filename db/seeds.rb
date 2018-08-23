@@ -28,6 +28,7 @@ chocolate_bar_by_seller2 = Product.create(name: "chocolate bar", price: 4.50, de
 
 book_by_seller2 = Product.create(name: "book", price: 14.50, description: "bestselling thriller", seller: seller2, inventory: seller2_inventory, quantity: 1)
 book_by_seller3 = Product.create(name: "book", price: 14.50, description: "bestselling thriller", seller: seller3, inventory: seller3_inventory, quantity: 5)
+book_by_seller2 = Product.create(name: "car", price: 5000, description: "Tesla", seller: seller2, inventory: seller2_inventory, quantity: 1)
 
 computer_by_seller2 = Product.create(name: "computer", price: 1450.00, description: "for the future programmer", seller: seller2, inventory: seller2_inventory, quantity: 5, image_url: 'https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Flerablog.org%2Fwp-content%2Fuploads%2F2013%2F06%2Fmacbook-pro.jpg&u=https://lerablog.org/wp-content/uploads/2013/06/macbook-pro.jpg')
 computer_by_seller3 = Product.create(name: "computer", price: 1450.00, description: "for the future programmer", seller: seller3, inventory: seller3_inventory, quantity: 3, image_url: 'https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Flerablog.org%2Fwp-content%2Fuploads%2F2013%2F06%2Fmacbook-pro.jpg&u=https://lerablog.org/wp-content/uploads/2013/06/macbook-pro.jpg')

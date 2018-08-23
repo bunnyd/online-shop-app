@@ -1,16 +1,9 @@
-<h1><%= @product.name %></h1>
+<h1>Update Your Product Information</h1>
 
-<%= form_for @product do |f| %>
-  <%= f.hidden_field :seller_id %>
-  <%= f.hidden_field :inventory_id %>
-
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :price %><br>
-  <%= f.number_field :price, step: :any %><br>
-  <%= f.label :image_url %><br>
-  <%= f.text_field :image_url %><br>
-
-  <%= f.submit %>
-
+<% if flash[:error] != nil %>
+  <p><b>Error:</b> <%= flash[:error] %></p>
 <% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', products_path %>

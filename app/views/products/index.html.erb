@@ -12,17 +12,12 @@
       <td><%= link_to product.name, product_path(product) %></td>
       <td><%= product.description %></td>
       <td><%= number_to_currency(product.price) %></td>
+      <td><%= button_to 'Add to Cart', cart_products_path(product_id: product) %></td>
+      <% if @user.is_seller == true && product.seller == @user  %>
       <td><%= link_to 'Edit', edit_product_path(product) %></td>
       <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
+      <% end %>
+
     </tr>
   <% end %>
 </table>
-
-  <div class="row">
-    <ul>
-      <% @products.each do |product| %>
-          <b><%= product.name %></b> sold by: <%= product.seller.username %> (<%= number_to_currency(product.price) %>)
-          <%= button_to 'Add to Cart', cart_products_path(product_id: product) %>
-      <% end %>
-    </ul>
-  </div>

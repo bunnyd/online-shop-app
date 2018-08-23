@@ -1,3 +1,5 @@
+<%= link_to 'Go Back to Products', products_path %>
+
 <div class='container'>
   <table>
   <caption>Your Cart</caption>
@@ -16,16 +18,16 @@
   <thead>
 
     <tbody>
-      <% @user.products.each do |product| %>
+      <% @user.cart.cart_products.each do |cart_product| %>
       <tr>
-          <td><%= link_to product.name, product_path(product) %></td>
+          <td><%= link_to cart_product.product.name, product_path(cart_product.product) %></td>
           <td><%= @user.email %></td>
-          <td><%= product.seller.email %></td>
-          <td><%= product.price %></td>
-          <td><%= product.cart_products[0].quantity %></td>
-          <td><%= product.cart_products[0].quantity * product.price.to_f.round(2) %></td>
-          <!-- <td><%= link_to 'Edit', edit_cart_product_path(product) %></td> -->
-          <td><%= link_to 'Delete', cart_product_path(product), method: :delete %></td>
+          <td><%= cart_product.product.seller.email %></td>
+          <td><%= cart_product.product.price %></td>
+          <td><%= cart_product.quantity %></td>
+          <td><%= cart_product.quantity * cart_product.product.price.to_f.round(2) %></td>
+          <!-- <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td> -->
+          <td><%= link_to 'Delete', cart_product_path(cart_product), method: :delete %></td>
         </tr>
       <% end %>
     </tbody>
@@ -36,6 +38,5 @@
     </tr>
   </table>
   <%= button_to 'Checkout', checkout_path %>
-  <%= link_to 'Back', products_path %>
 
 </div>

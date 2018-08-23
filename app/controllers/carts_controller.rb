@@ -26,6 +26,12 @@ class CartsController < ApplicationController
   def update
   end
 
+  def checkout
+    @user = current_user
+    @products = @user.products
+    byebug
+  end
+
   private
   def set_cart
     @cart = Cart.find(session[:user_id])

@@ -1,6 +1,6 @@
 <h1><%= @product.name %></h1><br>
 
-Price: <%= @product.price %><br>
+Price: <%= number_to_currency(@product.price) %><br>
 Description: <%= @product.description %><br>
 seller: <%= link_to @product.seller.username, inventory_path(@product.inventory.id) %><br>
 <img src="<%= @product.image_url %>" alt="<%= @product.name %>"><br>
