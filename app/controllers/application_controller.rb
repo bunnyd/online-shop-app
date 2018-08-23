@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+<<<<<<< HEAD
   def redirect_if_not_logged_in
     if !session[:user_id]
       redirect_to login_path
@@ -8,4 +9,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @user = User.find(session[:user_id])
   end
+=======
+
+>>>>>>> erika
 end

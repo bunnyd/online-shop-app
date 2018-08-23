@@ -1,2 +1,16 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<h1><%= @product.name %></h1>
+
+<%= form_for @product do |f| %>
+  <%= f.hidden_field :seller_id %>
+  <%= f.hidden_field :inventory_id %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.label :price %><br>
+  <%= f.number_field :price, step: :any %><br>
+  <%= f.label :image_url %><br>
+  <%= f.text_field :image_url %><br>
+
+  <%= f.submit %>
+
+<% end %>

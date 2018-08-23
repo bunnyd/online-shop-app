@@ -4,7 +4,11 @@ class UsersController < ApplicationController
 
 
   def index
+<<<<<<< HEAD
 
+=======
+    @user = User.all
+>>>>>>> erika
   end
 
   def show
