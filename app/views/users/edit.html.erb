@@ -1,5 +1,9 @@
 <h1>Update Your Account Information</h1>
 
+<% if flash[:error] != nil %>
+  <p><b>Error:</b> <%= flash[:error] %></p>
+<% end %>
+
 <%= render 'form', user: @user %>
 
 <%= link_to 'Back', @user %> |

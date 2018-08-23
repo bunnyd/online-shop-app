@@ -1,2 +1,28 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+  <h1>Hello </h1>
+  <h1>Product List</h1><table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product_path(product) %></td>
+      <td><%= product.description %></td>
+      <td><%= number_to_currency(product.price) %></td>
+      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+  <div class="row">
+    <ul>
+      <% @products.each do |product| %>
+          <b><%= product.name %></b> sold by: <%= product.seller.username %> (<%= number_to_currency(product.price) %>)
+          <%= button_to 'Add to Cart', cart_products_path(product_id: product) %>
+      <% end %>
+    </ul>
+  </div>
