@@ -1,2 +1,46 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Welcome, <%= @user.full_name %>!</h1>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+<p>
+  <strong>Credit Card Number:</strong>
+  <%= @user.credit_card_number %>
+</p>
+<p>
+  <strong>Seller:</strong>
+  <%= @user.is_seller %>
+</p>
+
+<% if @user.is_seller == true %>
+  <h2>Inventory</h2>
+  <table>
+  <tr>
+    <th class='small-2 '>Name</th>
+    <th class='small-3 '>Description</th>
+    <th class='small-1 '>Price</th>
+    <th class='small-1 '></th>
+    <th class='small-1 '></th>
+  </tr>
+    <% @user.inventory.products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.description %></td>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+  <div>
+
+  </div>
+<% end %>
+<br>
+<%= link_to 'Edit User Account', edit_user_path(@user) %>
+<%= link_to 'View Cart', cart_path(@user) %>

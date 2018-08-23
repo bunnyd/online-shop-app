@@ -1,0 +1,14 @@
+<%= form_with(model: @cart_product, local: true) do |form| %>
+
+  <div class="form-group">
+    <%= form.label :product_id %><br>
+    <%= form.text_field :product_id %>
+  </div>
+  <div class="form-group">
+    <%= form.label :cart_id %><br>
+    <%= form.text_field :cart_id %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
