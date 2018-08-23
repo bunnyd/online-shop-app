@@ -161,13 +161,10 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-<<<<<<< HEAD
-=======
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
       rspec-mocks (~> 3.8.0)
->>>>>>> 54afe5e03fec35edfa547e120690b0b6a90d29ed
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.1)
@@ -176,10 +173,6 @@ GEM
     rspec-mocks (3.8.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> df4b9222f8e5b952ca130fd9148d95d965e30684
     rspec-rails (3.8.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -188,11 +181,6 @@ GEM
       rspec-expectations (~> 3.8.0)
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
-<<<<<<< HEAD
-=======
->>>>>>> 54afe5e03fec35edfa547e120690b0b6a90d29ed
-=======
->>>>>>> df4b9222f8e5b952ca130fd9148d95d965e30684
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
@@ -262,15 +250,8 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
   rails (~> 5.2.1)
-<<<<<<< HEAD
-  rspec-rails
-=======
   rspec
-<<<<<<< HEAD
->>>>>>> 54afe5e03fec35edfa547e120690b0b6a90d29ed
-=======
   rspec-rails
->>>>>>> df4b9222f8e5b952ca130fd9148d95d965e30684
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
@@ -285,4 +266,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.3
+   1.16.2
