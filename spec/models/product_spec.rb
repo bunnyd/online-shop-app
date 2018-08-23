@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
 
   let(:bman_inventory) { Inventory.create(seller:  bman) }
 
-  let(:valid_product) { Product.create(name: "candy", price: 11.00, description: "a sweet for the sweet", seller: bman, inventory: bman_inventory)
+  let(:valid_product) { Product.create(name: "candy", price: 11.00, description: "a sweet for the sweet", seller: bman, inventory: bman_inventory, quantity: 1)
   }
 
   let(:bman_cart) { Cart.create(user: bman) }
@@ -45,8 +45,14 @@ RSpec.describe Product, type: :model do
     valid_product.description = nil
     expect(valid_product).to_not be_valid
   end
+
   it 'is not valid without a seller' do
     valid_product.seller = nil
+    expect(valid_product).to_not be_valid
+  end
+
+  it 'is not valid without a quantity' do
+    valid_product.quantity = nil
     expect(valid_product).to_not be_valid
   end
 

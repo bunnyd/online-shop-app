@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_214543) do
+ActiveRecord::Schema.define(version: 2018_08_23_133219) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "cart_id"
@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_214543) do
     t.integer "inventory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url", default: "default_product.jpg"
+    t.string "image_url", default: "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-KK6yWHp9fIw%2FUHbPLNIsJTI%2FAAAAAAAAEew%2FVk3b-HHcsNo%2Fs1600%2Fcute-baby-kittens-2.jpg&f=1"
+    t.integer "quantity"
     t.index ["inventory_id"], name: "index_products_on_inventory_id"
   end
 

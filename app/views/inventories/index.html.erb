@@ -1,2 +1,10 @@
-<h1>Inventories#index</h1>
-<p>Find me in app/views/inventories/index.html.erb</p>
+<h1>Welcome to Bootleg Amazon's Local Marketplace!</h1>
+
+<% @inventories.each do |inventory| %>
+
+  <%= link_to inventory.store_name, inventory_path(inventory) %><br>
+    <% inventory.products.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+
+<% end %>

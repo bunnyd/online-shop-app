@@ -1,2 +1,15 @@
-<h1>Inventories#show</h1>
-<p>Find me in app/views/inventories/show.html.erb</p>
+<h2>Welcome to <%= @inventory.seller_username %>'s Humble Shop!</h2><br>
+
+<% @inventory.products.each do |product| %>
+
+  <ul>
+    <%= link_to product.name, product_path(product) %><br>
+    $<%= product.price %><br>
+    <%= product.description %><br>
+    For sale by:<%= link_to product.seller.username, users_path(product.seller) %><br>
+    <img src="<%= product.image_url %>" alt="<%= product.name %>"><br>
+  </ul><br>
+
+<% end %>
+
+<%= link_to 'Edit Inventory', edit_inventory_path(@inventory) %>
