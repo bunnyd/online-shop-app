@@ -1,0 +1,10 @@
+<%= form_with(model: cart) do |form| %>
+
+  <% if flash[:error] != nil %>
+    <p><b>Error:</b> <%= flash[:error] %></p>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

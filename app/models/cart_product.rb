@@ -4,4 +4,7 @@ class CartProduct < ApplicationRecord
 
   validates :quantity, :cart, :product, presence: true
 
+  def total_price
+    product.price*quantity
+  end
 end

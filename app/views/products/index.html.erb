@@ -1,12 +1,28 @@
-<h1>All products our site has to offer!</h1><br>
+  <h1>Hello </h1>
+  <h1>Product List</h1><table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.name, product_path(product) %></td>
+      <td><%= product.description %></td>
+      <td><%= number_to_currency(product.price) %></td>
+      <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
 
-<% @products.each do |product| %>
-<li>
-  <%= link_to product.name, product_path(product) %><br>
-  $<%= product.price %><br>
-  <%= product.description %><br>
-  For sale by:<%= link_to product.seller.username, users_path(product.seller) %><br>
-  <img src="<%= product.image_url %>" alt="<%= product.name %>"><br>
-</li><br>
-
-<% end %>
+  <div class="row">
+    <ul>
+      <% @products.each do |product| %>
+          <b><%= product.name %></b> sold by: <%= product.seller.username %> (<%= number_to_currency(product.price) %>)
+          <%= button_to 'Add to Cart', cart_products_path(product_id: product) %>
+      <% end %>
+    </ul>
+  </div>

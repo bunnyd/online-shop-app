@@ -1,0 +1,10 @@
+<h1>Editing Cart Product</h1>
+
+<% if flash[:error] != nil %>
+  <p><b>Error:</b> <%= flash[:error] %></p>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @cart_product %> |
+<%= link_to 'Back', cart_products_path %>
