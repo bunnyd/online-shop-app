@@ -1,10 +1,8 @@
-<%= link_to 'View Products', products_path %>
-
-<div class='container'>
-  <table>
-  <caption>Your Cart</caption>
+<h1>Your Cart</h1>
+<table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Product</th>
       <th>Buyer</th>
       <th>Seller</th>
@@ -13,29 +11,45 @@
       <th>Total price</th>
       <th></th>
       <th></th>
-      <th colspan="3"></th>
     </tr>
-  <thead>
-
-    <tbody>
-      <% @user.cart.cart_products.each do |cart_product| %>
-      <tr>
-          <td><%= link_to cart_product.product.name, product_path(cart_product.product) %></td>
-          <td><%= @user.email %></td>
-          <td><%= cart_product.product.seller.email %></td>
-          <td><%= number_to_currency(cart_product.product.price) %></td>
-          <td><%= cart_product.quantity %></td>
-          <td><%= number_to_currency(cart_product.quantity * cart_product.product.price.to_f.round(2)) %></td>
-          <td><%= link_to 'Delete', cart_product_path(cart_product), method: :delete %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    <br>
-    <tr></tr>
+  </thead>
+  <tbody>
+    <% @user.cart.cart_products.each do |cart_product| %>
     <tr>
-      <td><b>Subtotal: </b><%= number_to_currency(@cart.total_price) %></td>
-    </tr>
-  </table>
-  <%= button_to 'Checkout', checkout_path %>
+        <td><img src="<%= cart_product.product.image_url %>" alt="<%= cart_product.product.name %>"></td>
+        <td><%= link_to cart_product.product.name, product_path(cart_product.product) %></td>
+        <td><%= @user.email %></td>
+        <td><%= cart_product.product.seller.email %></td>
+        <td><%= number_to_currency(cart_product.product.price) %></td>
+        <td><%= cart_product.quantity %></td>
+        <td><%= number_to_currency(cart_product.quantity * cart_product.product.price.to_f.round(2)) %></td>
+        <td><%= link_to 'Delete', cart_product_path(cart_product), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><b>Subtotal: </b><%= number_to_currency(@cart.total_price) %></td>
+  <td></td>
+  <td></td>
 
-</div>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><%= button_to 'Checkout', checkout_path %>
+  <td></td>
+  <td></td>
+
+</td>
+</tr>
+</table>

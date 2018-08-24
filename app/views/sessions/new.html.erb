@@ -7,7 +7,7 @@
   <%= form_with url: '/sessions' do |f| %>
     <%= f.text_field :email, placeholder: "email" %>
     <%= f.password_field :password, placeholder: "password" %>
-    <%= f.submit %>
+    <%= f.submit 'Login'%>
   <% end %>
   <br>
   <%= link_to "Sign up", signup_path %>

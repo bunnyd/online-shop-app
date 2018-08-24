@@ -16,31 +16,34 @@
   <strong>Seller:</strong>
   <%= @user.is_seller %>
 </p>
-
+<%= link_to 'Edit User Account', edit_user_path(@user) %>
+<br>
 <% if @user.is_seller == true %>
   <h2>Inventory</h2>
-  <table>
-  <tr>
-    <th class='small-2 '>Name</th>
-    <th class='small-3 '>Description</th>
-    <th class='small-1 '>Price</th>
-    <th class='small-1 '></th>
-    <th class='small-1 '></th>
-  </tr>
-    <% @user.inventory.products.each do |product| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= link_to product.name, product_path(product) %></td>
-        <td><%= product.description %></td>
-        <td><%= number_to_currency(product.price) %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
-      </tr>
-    <% end %>
-  </table>
-  <div>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
 
-  </div>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.inventory.products.each do |product| %>
+        <tr>
+          <td><%= link_to product.name, product_path(product) %></td>
+          <td><%= product.description %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= link_to 'Delete', product_path(product), method: :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <% end %>
 <br>
-<%= link_to 'Edit User Account', edit_user_path(@user) %>
-<%= link_to 'View Cart', cart_path(@user) %>
