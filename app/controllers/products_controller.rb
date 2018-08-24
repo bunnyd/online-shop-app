@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :current_product, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in, only: [:index, :show]
+  before_action :redirect_if_not_seller, only: [:edit]
 
 
   def index
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def edit
@@ -53,5 +55,11 @@ class ProductsController < ApplicationController
 
   def current_product
     @product = Product.find(params[:id])
+  end
+
+  def redirect_if_not_seller
+    if current_product.seller != current_user
+      redirect_to product_path(current_product)
+    end
   end
 end
