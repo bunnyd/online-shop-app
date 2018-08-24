@@ -31,7 +31,7 @@ class CartsController < ApplicationController
 
   private
   def set_cart
-    @cart = Cart.find(session[:user_id])
+    @cart = Cart.find(params[:id])
   end
 
   def cart_params
