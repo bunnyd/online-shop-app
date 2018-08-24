@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  byebug
   before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :redirect_if_not_logged_in, only: [:show]
 
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    byebug
   end
 
   def new
