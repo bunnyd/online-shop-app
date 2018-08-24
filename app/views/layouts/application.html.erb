@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Online Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,11 +11,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if session[:user_id] %>
-      <%= button_to "Logout", '/sessions', method: 'delete' %>
-    <% end %>
-
+  <body  class="container">
+    <%= render 'layouts/navigation' %>
 
     <p>
       <class="notice"><%= notice %></p>

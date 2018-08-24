@@ -5,8 +5,18 @@ ruby '2.3.3'
 gem 'bcrypt'
 gem 'awesome_rails_console'
 gem 'devise'
-
 gem 'rspec'
+
+# gem 'bootstrap'
+# gem 'jquery-rails'
+# gem 'simple_form'
+# gem 'popper_js'
+# gem 'tether-rails'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap', '~> 4.0.0.alpha.6'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-tether'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
