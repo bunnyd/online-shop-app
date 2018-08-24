@@ -1,5 +1,7 @@
 <h1>Welcome, <%= @user.full_name %>!</h1>
 
+<img src="<%= @user.image_url %>" alt="<%= @user.username %>'s picture">
+
 <p>
   <strong>First Name:</strong>
   <%= @user.first_name %>
@@ -13,10 +15,10 @@
   <%= @user.credit_card_number %>
 </p>
 <p>
-  <strong>Seller:</strong>
-  <%= @user.is_seller %>
+  <strong>Has a store:</strong>
+  <%= @user.is_seller ? "Yes" : "No" %>
 </p>
-<%= link_to 'Edit User Account', edit_user_path(@user) %>
+<strong><%= link_to 'Edit User Account', edit_user_path(@user) %></strong>
 <br>
 <% if @user.is_seller == true %>
   <h2>Inventory</h2>
