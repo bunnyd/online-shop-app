@@ -10,14 +10,6 @@ class CartsController < ApplicationController
   end
 
   def create
-    # product = Product.find(params[:product_id])
-    # @cart_product = @cart.add_product(product.id)
-    # if @cart_product.valid?
-    #   @cart_product.save
-    # else
-    #   redirect_to
-    # end
-
   end
 
   def edit
@@ -28,8 +20,12 @@ class CartsController < ApplicationController
 
   def checkout
     @user = current_user
-    @products = @user.products
-    byebug
+    @cart = @user.cart
+    purchase_info = @cart.checkout
+    @confirmed_purchases = purchase_info[0]
+    @final_total_price = purchase_info[1]
+    @rejected_purchases = purchase_info[2]
+    @cart.clean_cart
   end
 
   private
@@ -38,7 +34,6 @@ class CartsController < ApplicationController
   end
 
   def cart_params
-  # byebug
   params.require(:cart).permit(:user_id, product_ids:[])
   end
 

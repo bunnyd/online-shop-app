@@ -15,22 +15,54 @@ class Cart < ApplicationRecord
 
   def total_price
     sum = 0
-    quantity = 0
     self.cart_products.each do |cart_product|
       quantity = cart_product.quantity
-      # byebug
-      sum += cart_product.product.price.round(2) * quantity
+      sum += (cart_product.product.price.round(2) * quantity)
     end
-    sum
+    sum.round(2)
+  end
+
+  def final_total_price
+    sum = 0
+    in_stock = hsh_of_products_in_seller_inventory
+    in_stock.each do |product, quantity|
+      sum += product.price * quantity
+    end
+    sum.round(2)
   end
 
   def checkout
-    #check with seller inventory to see if have items
-    #update seller inventory for each item have
-    #run total price for item have
-    #let users know if items not available
+    to_be_sold = hsh_of_products_in_seller_inventory
+    no_longer_in_stock = not_in_stock
+    reduce_inventory(to_be_sold)
+    [to_be_sold, self.final_total_price, no_longer_in_stock]
   end
 
-  def list_of_products_in_seller_inventory
+  def hsh_of_products_in_seller_inventory
+    selected = Hash.new(0)
+    self.cart_products.each do |cart_product|
+      inventory = cart_product.product.inventory
+      product_name = cart_product.product.name
+      if inventory.product_available(product_name) && inventory.verify_quantity(product_name) <= cart_product.quantity
+        selected[cart_product.product] += cart_product.quantity
+      end
+    end
+    selected
+  end
+
+  def not_in_stock
+    to_be_sold = hsh_of_products_in_seller_inventory
+    returned = self.products.reject { |product| to_be_sold.keys.include?(product) }
+  end
+
+  def reduce_inventory(in_stock)
+    in_stock.each do |product, quantity|
+      inventory = product.inventory
+      inventory.decrease_quantity(product.name, quantity)
+    end
+  end
+
+  def clean_cart
+    CartProduct.all.select { |cart_product| cart_product.cart_id == self.id }.map { |cp| cp.destroy }
   end
 end

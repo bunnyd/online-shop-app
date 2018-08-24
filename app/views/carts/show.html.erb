@@ -1,4 +1,4 @@
-<%= link_to 'Go Back to Products', products_path %>
+<%= link_to 'View Products', products_path %>
 
 <div class='container'>
   <table>
@@ -23,10 +23,9 @@
           <td><%= link_to cart_product.product.name, product_path(cart_product.product) %></td>
           <td><%= @user.email %></td>
           <td><%= cart_product.product.seller.email %></td>
-          <td><%= cart_product.product.price %></td>
+          <td><%= number_to_currency(cart_product.product.price) %></td>
           <td><%= cart_product.quantity %></td>
-          <td><%= cart_product.quantity * cart_product.product.price.to_f.round(2) %></td>
-          <!-- <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td> -->
+          <td><%= number_to_currency(cart_product.quantity * cart_product.product.price.to_f.round(2)) %></td>
           <td><%= link_to 'Delete', cart_product_path(cart_product), method: :delete %></td>
         </tr>
       <% end %>

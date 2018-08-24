@@ -12262,3 +12262,1087 @@
   [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
   [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."inventory_id" = ?[0m  [["inventory_id", 1]]
   [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "cart_products"[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "cart_products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cart_id" integer, "product_id" integer, "quantity" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_cart_id" ON "cart_products" ("cart_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX "index_cart_products_on_product_id" ON "cart_products" ("product_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "carts"[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "carts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX "index_carts_on_user_id" ON "carts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "inventories"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "seller_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_seller_id" ON "inventories" ("seller_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" float, "description" text, "seller_id" integer, "inventory_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "image_url" varchar DEFAULT 'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-KK6yWHp9fIw%2FUHbPLNIsJTI%2FAAAAAAAAEew%2FVk3b-HHcsNo%2Fs1600%2Fcute-baby-kittens-2.jpg&f=1', "quantity" integer)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX "index_products_on_inventory_id" ON "products" ("inventory_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar DEFAULT 'customer', "username" varchar, "password_digest" varchar, "email" varchar, "first_name" varchar, "last_name" varchar, "credit_card_number" integer, "is_seller" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180823133219)[0m
+  [1m[35m (3.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180820223017),
+(20180820223903),
+(20180820223135),
+(20180822214543),
+(20180820223644),
+(20180821200911);
+
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-08-24 02:32:00.159448"], ["updated_at", "2018-08-24 02:32:00.159448"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (2.1ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.355778"], ["updated_at", "2018-08-24 02:32:00.355778"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.368616"], ["updated_at", "2018-08-24 02:32:00.368616"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.382813"], ["updated_at", "2018-08-24 02:32:00.382813"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.392705"], ["updated_at", "2018-08-24 02:32:00.392705"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.402929"], ["updated_at", "2018-08-24 02:32:00.402929"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.3ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.405642"], ["updated_at", "2018-08-24 02:32:00.405642"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.409749"], ["updated_at", "2018-08-24 02:32:00.409749"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.412603"], ["updated_at", "2018-08-24 02:32:00.412603"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.7ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.429780"], ["updated_at", "2018-08-24 02:32:00.429780"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.435248"], ["updated_at", "2018-08-24 02:32:00.435248"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.440288"], ["updated_at", "2018-08-24 02:32:00.440288"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.444242"], ["updated_at", "2018-08-24 02:32:00.444242"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.455797"], ["updated_at", "2018-08-24 02:32:00.455797"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.458537"], ["updated_at", "2018-08-24 02:32:00.458537"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.461556"], ["updated_at", "2018-08-24 02:32:00.461556"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.463798"], ["updated_at", "2018-08-24 02:32:00.463798"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.472808"], ["updated_at", "2018-08-24 02:32:00.472808"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.475417"], ["updated_at", "2018-08-24 02:32:00.475417"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.478772"], ["updated_at", "2018-08-24 02:32:00.478772"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.481307"], ["updated_at", "2018-08-24 02:32:00.481307"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.493512"], ["updated_at", "2018-08-24 02:32:00.493512"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.499925"], ["updated_at", "2018-08-24 02:32:00.499925"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.502635"], ["updated_at", "2018-08-24 02:32:00.502635"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:32:00.504167"], ["updated_at", "2018-08-24 02:32:00.504167"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.511914"], ["updated_at", "2018-08-24 02:32:00.511914"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.529495"], ["updated_at", "2018-08-24 02:32:00.529495"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.534069"], ["updated_at", "2018-08-24 02:32:00.534069"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.559269"], ["updated_at", "2018-08-24 02:32:00.559269"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.563085"], ["updated_at", "2018-08-24 02:32:00.563085"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.566316"], ["updated_at", "2018-08-24 02:32:00.566316"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.579519"], ["updated_at", "2018-08-24 02:32:00.579519"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.582649"], ["updated_at", "2018-08-24 02:32:00.582649"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.585677"], ["updated_at", "2018-08-24 02:32:00.585677"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."inventory_id" = ?[0m  [["inventory_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.599848"], ["updated_at", "2018-08-24 02:32:00.599848"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.602515"], ["updated_at", "2018-08-24 02:32:00.602515"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.605413"], ["updated_at", "2018-08-24 02:32:00.605413"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.623312"], ["updated_at", "2018-08-24 02:32:00.623312"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.628265"], ["updated_at", "2018-08-24 02:32:00.628265"], ["quantity", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.633643"], ["updated_at", "2018-08-24 02:32:00.633643"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.649280"], ["updated_at", "2018-08-24 02:32:00.649280"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.652791"], ["updated_at", "2018-08-24 02:32:00.652791"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.655978"], ["updated_at", "2018-08-24 02:32:00.655978"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.671572"], ["updated_at", "2018-08-24 02:32:00.671572"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.674474"], ["updated_at", "2018-08-24 02:32:00.674474"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.679131"], ["updated_at", "2018-08-24 02:32:00.679131"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.693003"], ["updated_at", "2018-08-24 02:32:00.693003"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.696004"], ["updated_at", "2018-08-24 02:32:00.696004"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.700128"], ["updated_at", "2018-08-24 02:32:00.700128"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "frozen burrito"], ["price", 1.5], ["description", "a college staple"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.705609"], ["updated_at", "2018-08-24 02:32:00.705609"], ["quantity", 3]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.715397"], ["updated_at", "2018-08-24 02:32:00.715397"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.718848"], ["updated_at", "2018-08-24 02:32:00.718848"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.723426"], ["updated_at", "2018-08-24 02:32:00.723426"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."inventory_id" = ?[0m  [["inventory_id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (1.3ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.743524"], ["updated_at", "2018-08-24 02:32:00.743524"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.749120"], ["updated_at", "2018-08-24 02:32:00.749120"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.756261"], ["updated_at", "2018-08-24 02:32:00.756261"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.758743"], ["updated_at", "2018-08-24 02:32:00.758743"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.766961"], ["updated_at", "2018-08-24 02:32:00.766961"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.769497"], ["updated_at", "2018-08-24 02:32:00.769497"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.779603"], ["updated_at", "2018-08-24 02:32:00.779603"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.783358"], ["updated_at", "2018-08-24 02:32:00.783358"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.791074"], ["updated_at", "2018-08-24 02:32:00.791074"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.794374"], ["updated_at", "2018-08-24 02:32:00.794374"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.804968"], ["updated_at", "2018-08-24 02:32:00.804968"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.808588"], ["updated_at", "2018-08-24 02:32:00.808588"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.819860"], ["updated_at", "2018-08-24 02:32:00.819860"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.823342"], ["updated_at", "2018-08-24 02:32:00.823342"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.835391"], ["updated_at", "2018-08-24 02:32:00.835391"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.839985"], ["updated_at", "2018-08-24 02:32:00.839985"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.850383"], ["updated_at", "2018-08-24 02:32:00.850383"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.853351"], ["updated_at", "2018-08-24 02:32:00.853351"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.867863"], ["updated_at", "2018-08-24 02:32:00.867863"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.870578"], ["updated_at", "2018-08-24 02:32:00.870578"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.2ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.873136"], ["updated_at", "2018-08-24 02:32:00.873136"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.874436"], ["updated_at", "2018-08-24 02:32:00.874436"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:32:00.875842"], ["updated_at", "2018-08-24 02:32:00.875842"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "cart_products" WHERE "cart_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.886379"], ["updated_at", "2018-08-24 02:32:00.886379"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:32:00.889124"], ["updated_at", "2018-08-24 02:32:00.889124"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:32:00.892341"], ["updated_at", "2018-08-24 02:32:00.892341"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:32:00.894522"], ["updated_at", "2018-08-24 02:32:00.894522"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:32:00.896522"], ["updated_at", "2018-08-24 02:32:00.896522"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "carts" INNER JOIN "cart_products" ON "carts"."id" = "cart_products"."cart_id" WHERE "cart_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (1.1ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.766479"], ["updated_at", "2018-08-24 02:40:05.766479"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (1.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.777377"], ["updated_at", "2018-08-24 02:40:05.777377"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.793170"], ["updated_at", "2018-08-24 02:40:05.793170"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (1.9ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:05.801933"], ["updated_at", "2018-08-24 02:40:05.801933"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.812317"], ["updated_at", "2018-08-24 02:40:05.812317"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.815328"], ["updated_at", "2018-08-24 02:40:05.815328"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.817914"], ["updated_at", "2018-08-24 02:40:05.817914"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:05.819459"], ["updated_at", "2018-08-24 02:40:05.819459"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.827313"], ["updated_at", "2018-08-24 02:40:05.827313"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.829765"], ["updated_at", "2018-08-24 02:40:05.829765"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.831883"], ["updated_at", "2018-08-24 02:40:05.831883"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:05.834343"], ["updated_at", "2018-08-24 02:40:05.834343"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (1.5ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.844669"], ["updated_at", "2018-08-24 02:40:05.844669"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.3ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.849740"], ["updated_at", "2018-08-24 02:40:05.849740"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.852156"], ["updated_at", "2018-08-24 02:40:05.852156"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:05.853899"], ["updated_at", "2018-08-24 02:40:05.853899"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.4ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.862249"], ["updated_at", "2018-08-24 02:40:05.862249"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.864604"], ["updated_at", "2018-08-24 02:40:05.864604"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.866559"], ["updated_at", "2018-08-24 02:40:05.866559"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:05.868989"], ["updated_at", "2018-08-24 02:40:05.868989"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.8ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.879009"], ["updated_at", "2018-08-24 02:40:05.879009"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.2ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.881965"], ["updated_at", "2018-08-24 02:40:05.881965"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.884325"], ["updated_at", "2018-08-24 02:40:05.884325"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:40:05.886089"], ["updated_at", "2018-08-24 02:40:05.886089"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.895660"], ["updated_at", "2018-08-24 02:40:05.895660"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.906373"], ["updated_at", "2018-08-24 02:40:05.906373"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.910063"], ["updated_at", "2018-08-24 02:40:05.910063"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.925528"], ["updated_at", "2018-08-24 02:40:05.925528"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.927916"], ["updated_at", "2018-08-24 02:40:05.927916"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.930768"], ["updated_at", "2018-08-24 02:40:05.930768"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.943504"], ["updated_at", "2018-08-24 02:40:05.943504"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.947726"], ["updated_at", "2018-08-24 02:40:05.947726"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.951149"], ["updated_at", "2018-08-24 02:40:05.951149"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "products" WHERE "products"."inventory_id" = ?[0m  [["inventory_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.967352"], ["updated_at", "2018-08-24 02:40:05.967352"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.969753"], ["updated_at", "2018-08-24 02:40:05.969753"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.972769"], ["updated_at", "2018-08-24 02:40:05.972769"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:05.987577"], ["updated_at", "2018-08-24 02:40:05.987577"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.990331"], ["updated_at", "2018-08-24 02:40:05.990331"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:05.992930"], ["updated_at", "2018-08-24 02:40:05.992930"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.004960"], ["updated_at", "2018-08-24 02:40:06.004960"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.007340"], ["updated_at", "2018-08-24 02:40:06.007340"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.010247"], ["updated_at", "2018-08-24 02:40:06.010247"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.025058"], ["updated_at", "2018-08-24 02:40:06.025058"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.027473"], ["updated_at", "2018-08-24 02:40:06.027473"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.030728"], ["updated_at", "2018-08-24 02:40:06.030728"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."name" = ? LIMIT ?[0m  [["name", "candy"], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.043159"], ["updated_at", "2018-08-24 02:40:06.043159"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.048560"], ["updated_at", "2018-08-24 02:40:06.048560"], ["quantity", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.052247"], ["updated_at", "2018-08-24 02:40:06.052247"], ["quantity", 100]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "frozen burrito"], ["price", 1.5], ["description", "a college staple"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.058490"], ["updated_at", "2018-08-24 02:40:06.058490"], ["quantity", 3]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.066141"], ["updated_at", "2018-08-24 02:40:06.066141"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.068663"], ["updated_at", "2018-08-24 02:40:06.068663"], ["quantity", 11]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "junk food"], ["price", 1.0], ["description", "cheap junk food"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.070722"], ["updated_at", "2018-08-24 02:40:06.070722"], ["quantity", 100]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mInventory Load (0.1ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories"[0m
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."inventory_id" = ?[0m  [["inventory_id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.083919"], ["updated_at", "2018-08-24 02:40:06.083919"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.101143"], ["updated_at", "2018-08-24 02:40:06.101143"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.109691"], ["updated_at", "2018-08-24 02:40:06.109691"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.112445"], ["updated_at", "2018-08-24 02:40:06.112445"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.122430"], ["updated_at", "2018-08-24 02:40:06.122430"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.125235"], ["updated_at", "2018-08-24 02:40:06.125235"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.135029"], ["updated_at", "2018-08-24 02:40:06.135029"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.137988"], ["updated_at", "2018-08-24 02:40:06.137988"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.147914"], ["updated_at", "2018-08-24 02:40:06.147914"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.152666"], ["updated_at", "2018-08-24 02:40:06.152666"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.164610"], ["updated_at", "2018-08-24 02:40:06.164610"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.168398"], ["updated_at", "2018-08-24 02:40:06.168398"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.6ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.189101"], ["updated_at", "2018-08-24 02:40:06.189101"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.192173"], ["updated_at", "2018-08-24 02:40:06.192173"], ["quantity", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.201134"], ["updated_at", "2018-08-24 02:40:06.201134"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.203934"], ["updated_at", "2018-08-24 02:40:06.203934"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.4ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.211646"], ["updated_at", "2018-08-24 02:40:06.211646"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.215697"], ["updated_at", "2018-08-24 02:40:06.215697"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.223072"], ["updated_at", "2018-08-24 02:40:06.223072"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.225602"], ["updated_at", "2018-08-24 02:40:06.225602"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.2ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.229492"], ["updated_at", "2018-08-24 02:40:06.229492"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:06.231126"], ["updated_at", "2018-08-24 02:40:06.231126"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:40:06.232479"], ["updated_at", "2018-08-24 02:40:06.232479"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "cart_products" WHERE "cart_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mInventory Create (0.5ms)[0m  [1m[32mINSERT INTO "inventories" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.241789"], ["updated_at", "2018-08-24 02:40:06.241789"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Create (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "price", "description", "inventory_id", "created_at", "updated_at", "quantity") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "candy"], ["price", 11.0], ["description", "a sweet for the sweet"], ["inventory_id", 1], ["created_at", "2018-08-24 02:40:06.244790"], ["updated_at", "2018-08-24 02:40:06.244790"], ["quantity", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCart Create (0.3ms)[0m  [1m[32mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-08-24 02:40:06.248536"], ["updated_at", "2018-08-24 02:40:06.248536"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 2], ["created_at", "2018-08-24 02:40:06.250476"], ["updated_at", "2018-08-24 02:40:06.250476"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCartProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "cart_products" ("cart_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cart_id", 1], ["product_id", 1], ["quantity", 3], ["created_at", "2018-08-24 02:40:06.252655"], ["updated_at", "2018-08-24 02:40:06.252655"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "carts" INNER JOIN "cart_products" ON "carts"."id" = "cart_products"."cart_id" WHERE "cart_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

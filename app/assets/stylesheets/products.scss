@@ -1,3 +1,17 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+img {
+    width:100%;
+    max-width:200px;
+}
+
+table {
+  cellspacing: 10;
+  layout: fixed;
+}
+
+td {
+  word-wrap: break-word;
+}

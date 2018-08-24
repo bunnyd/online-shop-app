@@ -2,6 +2,7 @@
   <p><b>Error:</b> <%= flash[:error] %></p>
 <% end %>
 
+<% if @confirmed_purchases.length > 0 %>
 <h1>Thanks for your order!</h1>
 
 <table>
@@ -18,15 +19,32 @@
   </thead>
 
   <tbody>
-    <% @user.products.each do |product| %>
+    <% @confirmed_purchases.each do |purchase, quantity| %>
       <tr>
-        <td><%= product.name %></td>
+        <td><%= purchase.name %></td>
         <td><%= @user.email %></td>
-        <td><%= product.seller.email %></td>
-        <td><%= product.price %></td>
-        <td><%= product.cart_products %></td>
-        <td><%= product.total_price.round(2) %></td>
+        <td><%= purchase.seller.email %></td>
+        <td><%= number_to_currency(purchase.price) %></td>
+        <td><%= quantity %></td>
+        <td><%= number_to_currency(purchase.total_price(@cart)) %></td>
       </trt>
     <% end %>
   </tbody>
 </table>
+<% end %>
+
+<% if @confirmed_purchases.length > 0 %>
+<h2>Total: <%=number_to_currency(@final_total_price)%>
+</h2>
+<% else %>
+<h2>Total: $0.00 </h2>
+<% end %>
+
+<% if @rejected_purchases.length > 0 %>
+<h3>Please note that the following items and quantites are no longer available for purchase from the sellers you selected:</h3>
+  <% @rejected_purchases.each do |rejected| %>
+  <li><%= rejected.name %> from <%= rejected.seller.username %></li>
+  <% end %>
+<% end %>
+
+<%= link_to 'Cart', cart_path(@cart) %>
