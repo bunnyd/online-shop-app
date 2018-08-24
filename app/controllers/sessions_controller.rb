@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
     # check if password is legit
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      # byebug
+
+      redirect_to user
     else
       flash[:error] = "Invalid email/password. Try again."
       redirect_to login_path

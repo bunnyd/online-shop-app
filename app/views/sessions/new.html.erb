@@ -1,4 +1,4 @@
-<h2>Online Shop</h2>
+<h1>Login</h2>
 
 <% if flash[:error] != nil %>
   <p><b>Error:</b> <%= flash[:error] %></p>
@@ -9,6 +9,6 @@
     <%= f.password_field :password, placeholder: "password" %>
     <%= f.submit %>
   <% end %>
-
+  <br>
   <%= link_to "Sign up", signup_path %>
 </div>

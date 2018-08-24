@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :current_product, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in, only: [:index, :show]
+
 
   def index
     @products = Product.all
