@@ -12,4 +12,6 @@
 
 <% end %>
 
+<% if session[:user_id] == @inventory.seller.id %>
 <%= link_to 'Edit Inventory', edit_inventory_path(@inventory) %>
+<% end %>

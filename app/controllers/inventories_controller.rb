@@ -1,5 +1,7 @@
 class InventoriesController < ApplicationController
   before_action :current_inventory, only: [:show, :edit, :update]
+  before_action :redirect_if_not_logged_in, only: [:edit]
+
   def index
     @inventories = Inventory.all
   end

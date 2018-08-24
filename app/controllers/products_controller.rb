@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :current_product, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_logged_in, only: [:index, :show]
+  before_action :redirect_if_not_logged_in, only: [:index, :edit, :update]
   before_action :redirect_if_not_seller, only: [:edit]
 
 
@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = current_user
   end
 
   def edit

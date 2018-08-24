@@ -1,11 +1,14 @@
 <h1><%= @product.name %></h1><br>
 
-Price: <%= number_to_currency(@product.price) %><br>
-Description: <%= @product.description %><br>
-seller: <%= link_to @product.seller.username, inventory_path(@product.inventory.id) %><br>
-<img src="<%= @product.image_url %>" alt="<%= @product.name %>"><br>
+<img src="<%= @product.image_url %>" alt="<%= @product.name %>">
+<br>
+<strong> Price: </strong> <%= number_to_currency(@product.price) %><br>
+<strong> Description: </strong> <%= @product.description %><br>
+<strong> Seller: </strong> <%= link_to @product.seller.username, inventory_path(@product.inventory.id) %><br>
 </li><br>
 
-<% if @user == @product.seller %>
-<%= link_to 'Edit', edit_product_path(@product) %>
+<%= button_to 'Add to Cart', cart_products_path(product_id: @product) %>
+
+<% if session[:user_id] == @product.seller %>
+<%= link_to 'Edit Product', edit_product_path(@product) %>
 <% end %>

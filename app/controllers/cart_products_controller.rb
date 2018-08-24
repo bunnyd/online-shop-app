@@ -1,5 +1,7 @@
 class CartProductsController < ApplicationController
   before_action :set_cart_product, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_logged_in, only: [:show]
+
 
   def index
     @cart_products = CartProduct.all
